@@ -1,0 +1,13 @@
+.homepage {
+  & > section {
+    width: clamp(310px, 75vw, 700px);
+    border-radius: 20px;
+    color: #414141;
+  }
+  .homepage__header {
+    font-size: 30px;
+    color: rgb(235, 217, 55);
+    font-weight: 700;
+  }
+}
+

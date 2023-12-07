@@ -1,0 +1,37 @@
+@import "variables";
+@import "mixins";
+@import "App";
+@import "HomePage";
+@import "ChatsPage";
+@import "UserListItem";
+@import "ChatListItem";
+@import "groupMemberItem";
+@import "LoadingListItem";
+@import "LoadingMsgs";
+@import "Message";
+@import "MsgAttachment";
+@import url($appFontUrl);
+
+body {
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  background: #202020;
+  // background-image: url($appBgUrl);
+  & * {
+    font-family: "Trebuchet MS";
+  }
+  .pointer {
+    cursor: pointer;
+  }
+  .notAllowed {
+    cursor: not-allowed;
+  }
+  img {
+    display: inline-block;
+    object-fit: cover;
+  }
+  & * {
+    @include scrollbars(8px);
+  }
+  @include scrollbars(6px);
+}

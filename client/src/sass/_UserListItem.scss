@@ -1,0 +1,16 @@
+.userListItem {
+  @include setListItemBaseStyles;
+  .userListAvatar {
+    margin-left: -5px;
+    @include getImgDimensions(0.42);
+  }
+  .userListData {
+    .userListName {
+      margin-top: 7px;
+      margin-bottom: -5px;
+    }
+    .userListEmail {
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+.msgRow {
+  .msgBox {
+    max-width: 75%;
+    position: relative;
+  }
+  @media (min-width: 576px) {
+    .msgBox {
+      max-width: 70%;
+    }
+  }
+  @media (min-width: 900px) {
+    .msgBox {
+      max-width: 60%;
+    }
+  }
+  .yourMsg {
+    cursor: pointer;
+    background-color: #006652;
+  }
+  .receiversMsg {
+    background-color: #2e2e2e;
+  }
+  .msgSender {
+    width: fit-content;
+    margin: -4px 5px 4px 0px;
+    font-size: 16px;
+    color: #db84f5;
+    &:hover {
+      color: #98affa;
+    }
+    &:active {
+      color: #25d1f0;
+    }
+  }
+  .msgOptionsIcon {
+    cursor: pointer;
+    padding: 0px 2px;
+    opacity: 0;
+    &:hover {
+      opacity: 1;
+    }
+    z-index: 2;
+  }
+  .senderAvatar {
+    @include getImgDimensions(0.31);
+    background-color: transparent;
+    margin: 7px -3px 0px 2px;
+  }
+  .msgContent {
+    cursor: auto;
+    user-select: text;
+    & > span {
+      overflow-x: auto;
+      @include scrollbars(2px);
+    }
+    font-size: 18px;
+    margin-top: -4px;
+  }
+  .msgTime {
+    min-width: 90px;
+    margin: 5px -2px -5px auto;
+    font-size: 14px;
+    color: #c7c7c7;
+    .sendStatusIcon {
+      color: #39c3f1;
+      margin: 3px;
+    }
+  }
+}
+.msgDate {
+  font-size: 15px;
+  width: max-content;
+  color: #f5f5f5;
+  background-color: #5e5a69;
+}

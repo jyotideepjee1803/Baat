@@ -1,0 +1,110 @@
+.msgImageWrapper {
+  .msgImageFile {
+    cursor: pointer;
+    width: clamp(100px, 100%, 500px);
+    object-fit: cover;
+    max-height: 200px;
+    border-radius: 5px;
+  }
+}
+.msgFile {
+  position: relative;
+  border-radius: 5px;
+  padding: 10px;
+  word-wrap: break-word;
+  margin-bottom: 8px;
+  & > span {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 5px;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+  }
+  & > div {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  .downloadIcon {
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 13px;
+    color: lightblue;
+    padding: 7px 3px;
+    margin-left: 2px;
+    transition: background-color 0.2s ease;
+    &:hover {
+      background-color: #aaaaaa60;
+    }
+    z-index: 3;
+  }
+  .downloading {
+    cursor: progress;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+.previewFile {
+  border-radius: 15px;
+}
+.pdfFile {
+  background-color: #f83333dc;
+  @include setFileSizeColor(#f3d0f7);
+}
+.excelFile {
+  @include setFileSizeColor(#c2f1ef);
+}
+.pptFile {
+  background-color: #d1560e;
+  @include setFileSizeColor(#f7e7e7);
+}
+.wordFile {
+  background-color: #1872e77e;
+  @include setFileSizeColor(#c2f1ef);
+}
+.mediaFile {
+  background-color: #4b0539be;
+  @include setFileSizeColor(#f3d0f7);
+  .mediaMsg {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    min-width: 180px;
+    background-color: #666666aa;
+    transition: transform 0.2s ease;
+    color: #fff;
+    &:hover {
+      background-color: #777777aa;
+    }
+    &:active {
+      background-color: #888888aa;
+      transform: scale(0.98);
+    }
+    .playMedia {
+      transition: transform 0.2s ease;
+      &:active {
+        color: #d2e9e7;
+        transform: scale(0.8);
+      }
+    }
+    .mediaDuration {
+      position: absolute;
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .videoDuration {
+      @include setPositions($bottom: 0px, $left: 5px);
+    }
+    .audioDuration {
+      @include setPositions($bottom: 2px, $left: 3px);
+    }
+  }
+}
+.otherFile {
+  background-color: #666;
+  @include setFileSizeColor(#f3d0f7);
+}

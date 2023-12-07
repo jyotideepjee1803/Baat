@@ -1,0 +1,189 @@
+@keyframes slideUp {
+  0% {
+    bottom: 10px;
+  }
+  100% {
+    bottom: 55px;
+  }
+}
+@keyframes slideDown {
+  0% {
+    bottom: 55px;
+  }
+  100% {
+    bottom: 10px;
+  }
+}
+.chatpage {
+  min-width: 340px;
+  .chatpageDiv {
+    background-color: $chatpageBgColor;
+    border-radius: 10px;
+    padding: 2px 12px;
+    margin-top: 50px;
+  }
+  .chatpageHeader {
+    background-color: $chatpageBgColor;
+    border-radius: 10px;
+    padding: 2px 12px;
+    margin-top: 54px;
+    width : 80px;
+  }
+  .searchField{
+    background-color: #343434;
+  }
+  .chatpageView {
+    min-height: 500px;
+    height : calc(100vh - 90px);
+  }
+  .chatListView {
+    .chatListHeader {
+      color: #6a9bf0;
+      border-radius: 20px;
+      .btnCreateGroup {
+        position: absolute;
+        border-radius: 20px;
+        top: 4px;
+        right: 7px;
+      }
+    }
+    .searchChat {
+      margin-top: 20px;
+    }
+    .chatList {
+      height: 100%;
+      border-radius: 15px;
+    }
+  }
+  @media (min-width: 750px) {
+    .chatListView {
+      width: 100%;
+    }
+  }
+  @media (min-width: 900px) {
+    .chatListView {
+      width: 44%;
+    }
+  }
+  @media (min-width: 1100px) {
+    .chatListView {
+      width: 36%;
+    }
+  }
+  .messagesView {
+    .messagesHeader {
+      border-radius: 10px;
+      margin-bottom: 5px;
+    }
+    .messagesBody {
+      height: 100%;
+      background-attachment: fixed;
+      background-image: url($chatBgUrl);
+      border-radius: 15px;
+      .messages {
+        position: absolute;
+        width: calc(100% - 17px);
+        height: calc(100% - 95px);
+        .msgArea {
+          position: absolute;
+          @include setPositions(0px, 0px, 0px, 0px);
+          width: 98%;
+          margin: auto;
+          @include scrollbars(4px);
+        }
+        .msgListBottom {
+          &::before {
+            content: "";
+          }
+        }
+      }
+      .typingIndicator {
+        position: absolute;
+        z-index: 2;
+        & > span {
+          margin-top: 2px;
+          color: #a9c7f5;
+          font-size: 16px;
+          font-weight: 600;
+          font-family: "Trebuchet MS";
+        }
+      }
+      .displayTyping {
+        animation: slideUp 0.3s 1;
+        bottom: 55px;
+      }
+      .hideTyping {
+        animation: slideDown 0.4s 1;
+        bottom: 10px;
+      }
+      .msgInputDiv {
+        @include setPositions($bottom: 10px, $left: 10px, $right: 10px);
+        z-index: 5;
+        .attachFile {
+          border-radius: 7px 0px 0px 7px;
+        }
+        .emojiPicker {
+          bottom: calc(100% + 17px);
+        }
+        .emoji-picker-react {
+          box-shadow: 5px -5px 20px #111, 5px 5px 20px #111;
+          border-radius: 10px;
+          border: none;
+          caret-color: #fff;
+          input.emoji-search {
+            width: 95%;
+            margin: 7px 0px 0px 0px;
+            background-color: #555;
+            padding-left: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            &::placeholder {
+              color: #bbb;
+            }
+          }
+          & div {
+            background-color: #333;
+          }
+          .skin-tones-list * {
+            margin: 9px 0px 0px 5px;
+            background-color: auto;
+          }
+          .emoji-categories {
+            background-color: #aaa;
+          }
+          .emoji-group::before {
+            font-size: 17px;
+            background-color: #333;
+            color: #ddd;
+          }
+        }
+        .msgInput {
+          font-size: 18px;
+          max-height: 100px;
+          cursor: text;
+          caret-color: #6a9bf0;
+          line-height: 26px;
+          padding: 12px 0px;
+          outline: none;
+          overflow-x: hidden;
+          overflow-y: auto;
+          word-break: break-all;
+          @include scrollbars(5px);
+          &:empty::before {
+            content: "Enter a Message...";
+            color: grey;
+          }
+        }
+        .addCaption:empty::before {
+          content: "Add a Caption...";
+          color: grey;
+        }
+        .sendButton {
+          border-radius: 0px 7px 7px 0px;
+        }
+      }
+    }
+  }
+}
