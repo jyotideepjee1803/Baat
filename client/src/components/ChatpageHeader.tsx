@@ -1,20 +1,30 @@
-import { NotificationsNone, Search } from "@mui/icons-material";
+import { NotificationsNone, Search, GroupAdd } from "@mui/icons-material";
 import { Avatar, IconButton } from "@mui/material";
 import { SetStateAction, useEffect, useRef, useState } from "react";
+import AddMembersToGroup from "./dialogs/AddMembersToGroup";
 import NotificationsMenu from "./menus/NotificationsMenu";
 import ProfileSettingsMenu from "./menus/ProfileSettingsMenu";
 import SearchUsersDrawer from "./utils/SearchUsersDrawer";
 import getCustomTooltip from "./utils/CustomTooltip";
 import logo from "../animations/app_logo.json";
 import LottieAnimation from "./utils/LottieAnimation";
+import { 
+  displayDialog, 
+  setShowDialogActions 
+} from "../store/slices/CustomDialogSlice";
 import { useSelector } from "react-redux";
-import { selectAppState } from "../store/slices/AppSlice";
+import { selectAppState, setGroupInfo} from "../store/slices/AppSlice";
+import { useAppDispatch } from "../store/storeHooks";
+
 import {
   ChatType,
   ClickEventHandler,
   DialogBodySetter,
   SpanRef,
 } from "../utils/AppTypes";
+import { ThemeSwitch } from "./utils/ThemeSwitch";
+
+const DEFAULT_GROUP_DP = process.env.REACT_APP_DEFAULT_GROUP_DP;
 
 interface Props {
   chats: ChatType[];
@@ -33,6 +43,9 @@ const tooltipStyles = {
 const CustomTooltip = getCustomTooltip(arrowStyles, tooltipStyles);
 
 const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
+
+  const dispatch = useAppDispatch();
+
   const { loggedInUser } = useSelector(selectAppState);
   const appGif = useRef<HTMLSpanElement>();
   const notifCount = loggedInUser?.notifications?.length || "";
@@ -49,10 +62,31 @@ const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
   const openProfileSettingsMenu: ClickEventHandler = (e) =>
     setProfileSettingsMenuAnchor(
       e.target as SetStateAction<HTMLElement | null>
-    );
+  );
 
   // For opening/closing 'search users' left drawer
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const openCreateGroupChatDialog = () => {
+    dispatch(
+      setGroupInfo({
+        chatDisplayPic: null,
+        chatDisplayPicUrl: DEFAULT_GROUP_DP,
+        chatName: "",
+        users: [],
+      })
+    );
+    dispatch(setShowDialogActions(true));
+    setDialogBody(<AddMembersToGroup forCreateGroup={true} />);
+    dispatch(
+      displayDialog({
+        title: "Add Group Members",
+        nolabel: "Cancel",
+        yeslabel: "Next",
+        action: null,
+      })
+    );
+  };
 
   useEffect(() => {
     if (animateNotif) return;
@@ -68,15 +102,30 @@ const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
       className={`chatpageHeader chatpageView col-1 d-flex flex-column justify-content-between align-items-center user-select-none`}
     >
       <div className={`align-items-center`}>
-      {/* App Logo */}
-      <div className={`mb-4`}>
-        <LottieAnimation
-          ref={appGif as SpanRef}
-          className={"d-none d-sm-inline-block mt-2 me-sm-1 me-md-2"}
-          style={{ width: "30px", height: "30px" }}
-          animationData={logo}
-        />
+      {/*Profile */}
+      <div style={{marginTop :"10px"}}>
+        <CustomTooltip title="Profile Settings" placement="bottom-end" arrow>
+          <IconButton
+            className="mx-md-3 mx-lg-4"
+            sx={{
+              color: "#cadeef",
+              ":hover": { backgroundColor: "#cadeef" },
+            }}
+            onClick={openProfileSettingsMenu}
+          >
+            <Avatar
+              alt="LoggedInUser"
+              className="img-fluid"
+              src={loggedInUser?.profilePic}
+            />
+          </IconButton>
+        </CustomTooltip>
       </div>
+      <ProfileSettingsMenu
+          anchor={profileSettingsMenuAnchor as HTMLElement}
+          setAnchor={setProfileSettingsMenuAnchor}
+          setDialogBody={setDialogBody}
+      />
       {/* User notification*/}
       <div className={`mb-1`}>
         <CustomTooltip title={`Notifications`} placement="top-end" arrow>
@@ -84,8 +133,7 @@ const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
             className="position-relative mx-1"
             onClick={openNotificationMenu}
             sx={{
-              color: "#999999",
-              ":hover": { backgroundColor: "#aaaaaa20" },
+              ":hover": { backgroundColor: "#cadeef"},
             }}
           >
             {notifCount && (
@@ -109,7 +157,7 @@ const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
                 {!notifCount ? "" : notifCount > 99 ? "99+" : notifCount}
               </span>
             )}
-            <NotificationsNone className={`text-light`} />
+            <NotificationsNone style={{color: "#0784b5"}} />
           </IconButton>
         </CustomTooltip>
       </div>
@@ -123,45 +171,48 @@ const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
       <CustomTooltip title="Search or Start a new chat" placement="bottom-end" arrow>
         <IconButton
           sx={{
-            color: "#999999",
-            ":hover": { backgroundColor: "#aaaaaa20" },
+            color: "#cadeef",
+            ":hover": { backgroundColor: "#cadeef" },
           }}
           className={`position-relative mx-1`}
           onClick={() => setIsDrawerOpen(true)}
         >
-          <Search className={`text-light`}/>
+          <Search style={{color: "#0784b5"}}/>
         </IconButton>
       </CustomTooltip>
       <SearchUsersDrawer
         isDrawerOpen={isDrawerOpen}
         setIsDrawerOpen={setIsDrawerOpen}
       />
-      </div>
 
-      {/* Profile settings  */}
-      <div>
-        <CustomTooltip title="Profile Settings" placement="bottom-end" arrow>
+      <CustomTooltip
+          title="Create New Group Chat"
+          placement="bottom-end"
+          arrow
+        >
           <IconButton
             className="mx-md-3 mx-lg-4"
             sx={{
-              color: "#999999",
-              ":hover": { backgroundColor: "#aaaaaa20" },
+              color: "#cadeef",
+              ":hover": { backgroundColor: "#cadeef" },
             }}
-            onClick={openProfileSettingsMenu}
+            onClick={openCreateGroupChatDialog}
           >
-            <Avatar
-              alt="LoggedInUser"
-              className="img-fluid"
-              src={loggedInUser?.profilePic}
-            />
+            <GroupAdd style={{color: "#0784b5"}}/>
           </IconButton>
         </CustomTooltip>
       </div>
-      <ProfileSettingsMenu
-          anchor={profileSettingsMenuAnchor as HTMLElement}
-          setAnchor={setProfileSettingsMenuAnchor}
-          setDialogBody={setDialogBody}
-      />
+
+      {/* Profile settings  */}
+      <div style={{padding : 10}}>
+        <CustomTooltip 
+          title="Change Theme"
+          placement="bottom-end"
+          arrow
+        >
+          <ThemeSwitch defaultChecked/>
+        </CustomTooltip>
+      </div>
     </div>
   );
 };

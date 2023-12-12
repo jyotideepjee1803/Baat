@@ -40,7 +40,7 @@ const SearchInput = forwardRef<HTMLInputElement, Props>((props, inputRef) => {
         <span
           className={`input-group-text searchField ${disableIfLoading} border-0 text-light`}
         >
-          <Search className="mx-0" style={{ marginTop: "3px" }} />
+          <Search className="mx-0" style={{ marginTop: "3px", color : "#77828d" }} />
         </span>
         <input
           type="text"
@@ -67,7 +67,7 @@ const SearchInput = forwardRef<HTMLInputElement, Props>((props, inputRef) => {
             }}
             sx={{ ":hover": { backgroundColor: "#aaaaaa20" } }}
           >
-            <Clear style={{ fontSize: "19px" }} />
+            <Clear style={{ fontSize: "19px",color: "#77828d" }} />
           </IconButton>
         </span>
       </div>

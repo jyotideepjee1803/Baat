@@ -8,7 +8,7 @@ import {
   Edit,
   KeyboardArrowDown,
 } from "@mui/icons-material";
-import { Avatar, CircularProgress, IconButton, TooltipProps } from "@mui/material";
+import { Avatar, CircularProgress, IconButton, TooltipProps, Divider, Chip } from "@mui/material";
 import { forwardRef, useEffect, useRef } from "react";
 import { selectAppState } from "../../store/slices/AppSlice";
 import { useAppSelector } from "../../store/storeHooks";
@@ -79,7 +79,6 @@ const Message = forwardRef(
     const isOtherDay = dateStringOf(currMsgDate) !== dateStringOf(prevMsgDate);
     const showCurrSender =
       !isLoggedInUser &&
-      selectedChat?.isGroupChat &&
       (!isSameSender || isOtherDay);
 
     useEffect(() => {
@@ -135,10 +134,10 @@ const Message = forwardRef(
               />
             </CustomTooltip>
           ) : (
-            selectedChat?.isGroupChat && <span style={{ width: 30 }}></span>
+            <span style={{ width: 30 }}></span>
           )}
           <div
-            className={`msgBox d-flex flex-column text-start p-2 rounded-3
+            className={`msgBox d-flex flex-column text-start p-2
           mx-2 mx-md-3 ${isLoggedInUser ? "yourMsg" : "receiversMsg"}`}
             data-msg={currMsgId}
             data-file-exists={file_id}
@@ -200,7 +199,7 @@ const Message = forwardRef(
                 data-msg={currMsgId}
                 data-file-exists={file_id}
                 title="Edit/Delete Message"
-                className={`msgOptionsIcon text-light position-absolute 
+                className={`msgOptionsIcon text-dark position-absolute 
               top-0 end-0 w-25 h-100`}
               >
                 <KeyboardArrowDown
@@ -289,7 +288,7 @@ const Message = forwardRef(
                       <DoneAll
                         data-msg={currMsgId}
                         data-file-exists={file_id}
-                        className="text-info fs-6 ms-1"
+                        className="sendStatusIcon fs-6 ms-1"
                       />
                     ) : (
                       <CircularProgress
@@ -304,9 +303,13 @@ const Message = forwardRef(
           </div>
         </section>
         {isOtherDay && (
-          <div className={`msgDate mt-3 mb-2 mx-auto py-1 px-3 rounded-3`}>
-            {msgDateStringOf(currMsgDate)}
-          </div>
+          
+          // <div className={`msgDate mt-3 mb-2 mx-auto py-1 px-3 rounded-3`}>
+          //   {msgDateStringOf(currMsgDate)}
+          // </div>
+          <Divider style={{width : "100%", marginTop : "10px", marginBottom : "10px"}}>
+            <Chip label = {msgDateStringOf(currMsgDate)}/>
+          </Divider>
         )}
       </>
     );

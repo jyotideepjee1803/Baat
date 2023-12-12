@@ -132,7 +132,7 @@ const ChatListItem = ({ chat, chatNotifCount, typingChatUser }: Props) => {
             className="lastMsgDate"
             data-chat={_id}
             data-has-notifs={chatNotifCount}
-            style={{ color: chatNotifCount ? "#50F0B8" : "#b9b9b9" }}
+            style={{ color: chatNotifCount ? "#0784b5" : "#77828d" }}
           >
             {lastMsgDateString === "Today"
               ? msgTimeStringOf(lastMsgDate)

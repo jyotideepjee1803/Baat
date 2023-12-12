@@ -8,7 +8,7 @@ import {
   parseInnerHTML,
   setCaretPosition,
 } from "../utils/appUtils";
-import { AttachFile, EmojiEmotions, Send } from "@mui/icons-material";
+import { AttachFile, EmojiEmotions, Send, Photo } from "@mui/icons-material";
 import getCustomTooltip from "./utils/CustomTooltip";
 import axios from "../utils/axios";
 import ViewProfileBody from "./dialogs/ViewProfileBody";
@@ -922,7 +922,8 @@ const MessagesView = ({ loadingMsgs, setLoadingMsgs, setDialogBody, deletePersis
     <div
       className={`chatpageDiv chatpageView messagesView col text-light mx-0 mx-md-1 ${
         selectedChat ? "d-flex" : "d-none d-md-flex"
-      } flex-column p-2 user-select-none`}
+      } flex-column user-select-none`}
+      style={{marginLeft : "0"}}
     >
       {selectedChat ? (
         <>
@@ -941,7 +942,7 @@ const MessagesView = ({ loadingMsgs, setLoadingMsgs, setDialogBody, deletePersis
           <section
             className={`messagesBody position-relative ${
               downloadingFileId || loadingMediaId ? "pe-none" : "pe-auto"
-            } d-flex flex-column m-1 p-2`}
+            } d-flex flex-column p-2`}
             onClick={onDiscardFileClick}
           >
             {/* Messages list */}
@@ -1007,24 +1008,36 @@ const MessagesView = ({ loadingMsgs, setLoadingMsgs, setDialogBody, deletePersis
               }`}
             >
               <span
-                className={`d-flex attachFile ${disableIfLoading} pointer bg-dark`}
+                className={`d-flex attachFile ${disableIfLoading} pointer`}
               >
                 <IconButton
                   onClick={onEmojiIconClick}
                   className={`d-flex ms-2 me-1 my-1`}
                   sx={iconStyles}
                 >
-                  <EmojiEmotions style={{ fontSize: 28 }} />
+                  <EmojiEmotions style={{ fontSize: 28, color : "#0784b5"}} />
                 </IconButton>
+                
                 <CustomTooltip title="Attach File" placement="top-start" arrow>
                   <IconButton
                     onClick={selectAttachment}
                     className={`d-flex my-2`}
                     sx={{ ...iconStyles, transform: "rotateZ(45deg)" }}
                   >
-                    <AttachFile style={{ fontSize: 22 }} />
+                    <AttachFile style={{ fontSize: 22, color : "#0784b5"}} />
                   </IconButton>
                 </CustomTooltip>
+
+                <CustomTooltip title="Attach Photo or Video" placement="top-start" arrow>
+                  <IconButton
+                    onClick={selectAttachment}
+                    className={`d-flex my-2`}
+                    sx={{ ...iconStyles}}
+                  >
+                    <Photo style={{ fontSize: 22, color : "#0784b5"}} />
+                  </IconButton>
+                </CustomTooltip>
+
                 {/* Emoji Picker */}
                 {showEmojiPicker && (
                   <span className="emojiPicker position-absolute start-0">
@@ -1045,6 +1058,17 @@ const MessagesView = ({ loadingMsgs, setLoadingMsgs, setDialogBody, deletePersis
                   className={`d-none`}
                   disabled={loadingMsgs}
                 />
+
+                <input
+                  type="file"
+                  accept="video/*,image/*"
+                  onChange={handleMsgFileInputChange}
+                  name="attachment"
+                  id="attachMsgFile"
+                  ref={msgFileInput}
+                  className={`d-none`}
+                  disabled={loadingMsgs}
+                />
               </span>
               {/* Content/text input */}
               <div
@@ -1056,7 +1080,7 @@ const MessagesView = ({ loadingMsgs, setLoadingMsgs, setDialogBody, deletePersis
                 ref={msgContent}
                 className={`msgInput ${
                   fileAttached && !msgEditMode ? "addCaption" : ""
-                } w-100 text-start d-flex bg-dark px-2 justify-content-start`}
+                } w-100 text-start d-flex px-2 justify-content-start`}
                 contentEditable={true}
                 style={{
                   borderRadius:
@@ -1068,14 +1092,15 @@ const MessagesView = ({ loadingMsgs, setLoadingMsgs, setDialogBody, deletePersis
               {/* Send button */}
               {enableMsgSend || (fileAttached && !msgEditMode) ? (
                 <span
-                  className={`d-inline-block btn btn-dark btn-sm sendButton ${disableIfLoading} pointer`}
+                  className={`d-inline-block btn btn-sm sendButton ${disableIfLoading} pointer`}
+                  style={{background : "#fcfcfc"}}
                   onClick={sendMessage}
                 >
                   <IconButton
                     className={`d-flex my-1 mx-0 mx-md-0`}
                     sx={{ margin: "4px 0px", padding: "5px", color: "#999999" }}
                   >
-                    <Send style={{ fontSize: 20 }} />
+                    <Send style={{ fontSize: 20, color : "#0784b5" }} />
                   </IconButton>
                 </span>
               ) : (

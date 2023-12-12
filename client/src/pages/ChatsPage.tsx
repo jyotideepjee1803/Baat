@@ -233,7 +233,7 @@ const ChatsPage = () => {
           {/* Header component */}
           <ChatpageHeader chats={chats} setDialogBody={setDialogBody} />
 
-          <section className={`row g-1 col`}>
+          <div className={`row g-1 col`} style={{marginTop : "0"}}>
             {/* Chat List component */}
             <ChatListView
               chats={chats}
@@ -256,7 +256,7 @@ const ChatsPage = () => {
                 ) as string
               }
             />
-          </section>
+          </div>
 
           {/* App Parent Dialog */}
           <CustomDialog

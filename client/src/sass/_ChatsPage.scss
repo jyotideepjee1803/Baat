@@ -16,25 +16,34 @@
 }
 .chatpage {
   min-width: 340px;
+  height: 100vh;
   .chatpageDiv {
-    background-color: $chatpageBgColor;
-    border-radius: 10px;
-    padding: 2px 12px;
-    margin-top: 50px;
+    background-color: #FCFCFC;
+    padding: 2px 0px 2px 0px;
+  }
+
+  .chatListDiv{
+      background-color: #ffffff;
+      padding: 2px 0px 2px 0px;
+      -webkit-box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
+      -moz-box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
+      box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
+      // z-index: 10;
+      // border-right: 1px solid #77828d;
   }
   .chatpageHeader {
-    background-color: $chatpageBgColor;
-    border-radius: 10px;
+    background-color: #FCFCFC;
     padding: 2px 12px;
-    margin-top: 54px;
     width : 80px;
+    -webkit-box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
+    box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
   }
   .searchField{
-    background-color: #343434;
+    background-color: #e0e4e8;
   }
   .chatpageView {
     min-height: 500px;
-    height : calc(100vh - 90px);
   }
   .chatListView {
     .chatListHeader {
@@ -55,31 +64,34 @@
       border-radius: 15px;
     }
   }
-  @media (min-width: 750px) {
-    .chatListView {
-      width: 100%;
+  @media (max-width: 768px){
+    .chatpageDiv{
+      display: none;
     }
   }
-  @media (min-width: 900px) {
+  @media (min-width: 768px) {
     .chatListView {
       width: 44%;
     }
   }
-  @media (min-width: 1100px) {
+
+  @media (min-width: 950px) {
     .chatListView {
       width: 36%;
     }
   }
   .messagesView {
     .messagesHeader {
-      border-radius: 10px;
-      margin-bottom: 5px;
+      background-color: #ffffff;
+      -webkit-box-shadow:  0px 5px 5px 0px  rgba(0,0,0,0.13);
+      -moz-box-shadow:  0px 5px 5px 0px  rgba(0,0,0,0.13);
+      box-shadow:  0px 5px 5px 0px  rgba(0,0,0,0.13);
+      margin-bottom: 2px;
     }
     .messagesBody {
       height: 100%;
       background-attachment: fixed;
-      background-image: url($chatBgUrl);
-      border-radius: 15px;
+      background-color:#cadeef;
       .messages {
         position: absolute;
         width: calc(100% - 17px);
@@ -120,6 +132,7 @@
         @include setPositions($bottom: 10px, $left: 10px, $right: 10px);
         z-index: 5;
         .attachFile {
+          background-color: #fcfcfc;
           border-radius: 7px 0px 0px 7px;
         }
         .emojiPicker {
@@ -160,10 +173,12 @@
           }
         }
         .msgInput {
+          background-color: #fcfcfc;
           font-size: 18px;
           max-height: 100px;
           cursor: text;
-          caret-color: #6a9bf0;
+          caret-color: #77828d;
+          color : #81909e;
           line-height: 26px;
           padding: 12px 0px;
           outline: none;
@@ -173,12 +188,12 @@
           @include scrollbars(5px);
           &:empty::before {
             content: "Enter a Message...";
-            color: grey;
+            color: #77828d;
           }
         }
         .addCaption:empty::before {
           content: "Add a Caption...";
-          color: grey;
+          color: #77828d;
         }
         .sendButton {
           border-radius: 0px 7px 7px 0px;

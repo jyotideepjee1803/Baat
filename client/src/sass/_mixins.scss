@@ -19,7 +19,7 @@
 
 @mixin scrollbars(
   $size: 7px,
-  $foregroundColor: #686868,
+  $foregroundColor:#fcfcfc,
   $backgroundColor: transparent
 ) {
   // (Chrome)
@@ -41,9 +41,9 @@
 }
 
 @mixin setListItemBaseStyles(
-  $bgDefault: #101010,
-  $bgHover: #1d1d1d,
-  $bgActive: #30002d
+  $bgDefault: #ffffff,
+  $bgHover: #f8f9fa,
+  $bgActive: #f8f9fa
 ) {
   margin-bottom: 5px;
   border-radius: 10px;

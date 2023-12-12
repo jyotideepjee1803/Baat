@@ -14,13 +14,13 @@
   width: $fullDimension;
   height: $fullDimension;
 }
-header {
-  padding: 6px 15px;
-}
+// header {
+//   padding: 6px 15px;
+// }
 .notifBadge {
   z-index: 5;
   font-family: cambria;
-  background-color: #22a96a;
+  background-color: #0784b5;
 }
 .notifCountChange {
   animation: growAndShrink 0.3s 1;

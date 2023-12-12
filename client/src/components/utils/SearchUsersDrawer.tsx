@@ -120,11 +120,13 @@ const SearchUsersDrawer = ({ isDrawerOpen, setIsDrawerOpen }: Props) => {
   return (
     <>
       <Drawer
+        className={`chatpageView chatListView chatListDiv text-light d-md-flex`}
         PaperProps={{
           sx: {
             borderTopRightRadius: 10,
             borderBottomRightRadius: 10,
-            backgroundImage: "linear-gradient(0deg,#222,#444)",
+            backgroundColor: "#0784b5",
+            opacity : "0.9",
             padding: "10px",
             width: "350px",
           },
@@ -155,7 +157,7 @@ const SearchUsersDrawer = ({ isDrawerOpen, setIsDrawerOpen }: Props) => {
           </span>
         </div>
         {/* Search Bar */}
-        <div className={`chatpageDiv chatpageView chatListView text-light d-none d-md-flex`}>
+        <div className={`chatpageView chatListView chatListDiv text-light d-md-flex`}>
         <SearchInput
           ref={searchUserInput}
           searchHandler={searchUsers}
@@ -174,8 +176,6 @@ const SearchUsersDrawer = ({ isDrawerOpen, setIsDrawerOpen }: Props) => {
           style={{ overflowY: "auto", overflowX: "hidden" }}
         >
           <div
-            // 'Event delegation' (add only one event listener for
-            // parent element instead of adding for each child element)
             onClick={onUserItemClick}
           >
             {loading ? (
@@ -191,7 +191,7 @@ const SearchUsersDrawer = ({ isDrawerOpen, setIsDrawerOpen }: Props) => {
             ) : searchQuery && !loading ? (
               <p className="text-light text-center fs-5 mt-3 mx-5">
                 No results found for '
-                <span className="text-info">
+                <span style={{color : "#f8f9fa"}}>
                   {truncateString(searchQuery, 30, 26)}
                 </span>
                 '

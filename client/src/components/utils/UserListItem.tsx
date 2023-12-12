@@ -28,7 +28,7 @@ const UserListItem = ({ user, truncateValues }: Props) => {
   return (
     <div
       data-user={_id}
-      className={`userListItem user-select-none d-flex text-light justify-content-start align-items-center pointer px-3`}
+      className={`userListItem user-select-none d-flex text-dark justify-content-start align-items-center pointer px-3`}
     >
       <CustomTooltip
         data-user={_id}

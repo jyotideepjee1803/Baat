@@ -16,6 +16,14 @@
   height: 100%;
 }
 
+body,html {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
 header {
   padding: 6px 15px;
 }
@@ -573,7 +581,7 @@ header {
   color: #c7c7c7;
 }
 .msgRow .msgTime .sendStatusIcon {
-  color: #39c3f1;
+  color:rgb(255, 255, 255);
   margin: 3px;
 }
 

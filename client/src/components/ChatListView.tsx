@@ -1,4 +1,3 @@
-import { GroupAdd } from "@mui/icons-material";
 import { useEffect, useRef, useState } from "react";
 import {
   debounce,
@@ -7,9 +6,7 @@ import {
   truncateString,
 } from "../utils/appUtils";
 import axios from "../utils/axios";
-import AddMembersToGroup from "./dialogs/AddMembersToGroup";
 import ChatListItem from "./utils/ChatListItem";
-import getCustomTooltip from "./utils/CustomTooltip";
 import FullSizeImage from "./utils/FullSizeImage";
 import LoadingList from "./utils/LoadingList";
 import SearchInput from "./utils/SearchInput";
@@ -40,8 +37,6 @@ import {
 import { useAppDispatch, useAppSelector } from "../store/storeHooks";
 import { AxiosRequestConfig } from "axios";
 
-const DEFAULT_GROUP_DP = process.env.REACT_APP_DEFAULT_GROUP_DP;
-
 interface Props {
   chats: ChatType[];
   setChats: StateSetter<ChatType[]>;
@@ -49,17 +44,6 @@ interface Props {
   setDialogBody: DialogBodySetter;
   typingChatUsers: string[];
 }
-
-const arrowStyles = { color: "#666" };
-const tooltipStyles = {
-  maxWidth: 250,
-  color: "#eee",
-  fontFamily: "Trebuchet MS",
-  fontSize: 16,
-  padding: "5px 12px",
-  backgroundColor: "#666",
-};
-const CustomTooltip = getCustomTooltip(arrowStyles, tooltipStyles);
 
 const ChatListView = ({
   chats,
@@ -76,27 +60,6 @@ const ChatListView = ({
   const [loading, setLoading] = useState(true);
   const [filteredChats, setFilteredChats] = useState<ChatType[]>(chats);
   const searchChatInput = useRef<HTMLInputElement>();
-
-  const openCreateGroupChatDialog = () => {
-    dispatch(
-      setGroupInfo({
-        chatDisplayPic: null,
-        chatDisplayPicUrl: DEFAULT_GROUP_DP,
-        chatName: "",
-        users: [],
-      })
-    );
-    dispatch(setShowDialogActions(true));
-    setDialogBody(<AddMembersToGroup forCreateGroup={true} />);
-    dispatch(
-      displayDialog({
-        title: "Add Group Members",
-        nolabel: "Cancel",
-        yeslabel: "Next",
-        action: null,
-      })
-    );
-  };
 
   const displayFullSizeImage = (e: React.MouseEvent) => {
     dispatch(setShowDialogActions(false));
@@ -201,15 +164,16 @@ const ChatListView = ({
 
   return (
     <div
-      className={`chatpageDiv chatpageView chatListView text-light ${
+      className={`chatListDiv chatpageView chatListView text-light ${
         selectedChat ? "d-none d-md-flex" : "d-flex"
-      } flex-column user-select-none mx-1 p-2 ${
-        loadingMsgs ? "pe-none" : "pe-auto"
+      } flex-column user-select-none mx-1 ${
+        loadingMsgs && "pe-none"
       }`}
+      style={{marginTop : "0", marginRight:"0"}}
     >
       {/* Search Bar */}
-      <section className="row align-items-center" >
-        <div className="col-10">
+      <section className="row align-items-center px-3" >
+        <div className="col">
         {chats?.length > 0 &&   
         <SearchInput
           ref={searchChatInput as InputRef}
@@ -219,21 +183,6 @@ const ChatListView = ({
           clearInput={() => setFilteredChats(chats)}
         />
         }
-        </div>
-        <div className="col">
-          {/* Create Group Chat */}
-          <CustomTooltip
-          title="Create New Group Chat"
-          placement="bottom-end"
-          arrow
-        >
-          <button
-            className={`btnCreateGroup pointer btn rounded-circle text-light px-3`}
-            onClick={openCreateGroupChatDialog}
-          >
-            <GroupAdd />
-          </button>
-        </CustomTooltip>
         </div>
       </section>
       {/* Chat list */}

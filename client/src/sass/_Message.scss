@@ -15,10 +15,27 @@
   }
   .yourMsg {
     cursor: pointer;
-    background-color: #006652;
+    background-color: #08a4e1;
+    border-radius: 25px 0px 25px 25px;
+    -moz-border-radius: 25px 0px 25px 25px;
+    -webkit-border-radius: 25px 0px 25px 25px;
+    border: 0px solid;
+    .msgContent{
+      color : #fcfcfc;
+    }
+    .msgTime{
+      color : #333131;
+    }
   }
   .receiversMsg {
-    background-color: #2e2e2e;
+    background-color: #ffffff;
+    border-radius: 0px 25px 25px 25px;
+    -moz-border-radius: 0px 25px 25px 25px;
+    -webkit-border-radius: 0px 25px 25px 25px;
+    border: 0px solid;
+    .msgTime{
+      margin-right: 4px;
+    }
   }
   .msgSender {
     width: fit-content;
@@ -53,16 +70,17 @@
       overflow-x: auto;
       @include scrollbars(2px);
     }
-    font-size: 18px;
+    font-size: 15px;
     margin-top: -4px;
+    color : #414c60;
   }
   .msgTime {
     min-width: 90px;
     margin: 5px -2px -5px auto;
     font-size: 14px;
-    color: #c7c7c7;
+    color: #747474;
     .sendStatusIcon {
-      color: #39c3f1;
+      color: rgb(197, 240, 186);
       margin: 3px;
     }
   }
@@ -70,6 +88,17 @@
 .msgDate {
   font-size: 15px;
   width: max-content;
-  color: #f5f5f5;
-  background-color: #5e5a69;
+  color: #747474;
+  h2 {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid #000; 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+  } 
+  
+  h2 span { 
+    background:#fff; 
+    padding:0 10px; 
+  }
 }

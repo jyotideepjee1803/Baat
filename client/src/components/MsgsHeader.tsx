@@ -38,7 +38,7 @@ const MsgsHeader = ({
 
   return (
     <section
-      className={`messagesHeader pointer-event d-flex justify-content-start position-relative w-100 fw-bold bg-info bg-opacity-10 py-2`}
+      className={`messagesHeader pointer-event d-flex justify-content-start position-relative w-100 fw-bold py-2`}
       onClick={hideEmojiPicker}
     >
       <CustomTooltip title="Go Back" placement="bottom-start" arrow>
@@ -50,7 +50,7 @@ const MsgsHeader = ({
             ":hover": { backgroundColor: "#aaaaaa20" },
           }}
         >
-          <ArrowBack />
+          <ArrowBack style={{color : "#77828d"}}/>
         </IconButton>
       </CustomTooltip>
       
@@ -83,7 +83,7 @@ const MsgsHeader = ({
         </IconButton>
       </CustomTooltip>
 
-      <span className="ms-2 mt-1 fs-5" title={chatName}>
+      <span className="ms-2 mt-1 fs-5" title={chatName} style={{color : "#77828d"}}>
         {truncateString(chatName, 22, 17)}
       </span>
 
