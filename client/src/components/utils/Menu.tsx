@@ -1,5 +1,4 @@
 import { Menu as MuiMenu, MenuProps } from "@mui/material";
-import { Dispatch, SetStateAction } from "react";
 import { AnchorSetter } from "../../utils/AppTypes";
 
 export const menuPaperProps = {
@@ -9,13 +8,13 @@ export const menuPaperProps = {
     maxHeight: 250,
     filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
     borderRadius: 2,
-    backgroundColor: "#404040",
+    backgroundColor: "#0784b5",
     mt: 1,
   },
 };
 
 export const menuItemProps = {
-  ":hover": { backgroundColor: "#505050" },
+  ":hover": { backgroundColor: "#39ace7" },
   color: "#e0e0e0",
   fontSize: "19px",
 };

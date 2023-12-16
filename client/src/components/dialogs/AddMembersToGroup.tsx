@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from "react";
 import { Avatar, Chip } from "@mui/material";
 import axios from "../../utils/axios";
@@ -141,7 +142,7 @@ const AddMembersToGroup = ({ getAddedMembers, forCreateGroup }: Props) => {
         style={{
           flex: "0.33",
           borderRadius: "15px",
-          backgroundColor: "#303030",
+          backgroundColor: "#cadeef",
         }}
       >
         {addedMembers?.map((user: UserType) => (

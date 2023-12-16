@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { SetStateAction, useEffect, useRef, useState } from "react";
 import { IconButton } from "@mui/material";
 import {

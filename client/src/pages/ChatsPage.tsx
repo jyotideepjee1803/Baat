@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import ChatpageHeader from "../components/ChatpageHeader";
@@ -233,7 +234,7 @@ const ChatsPage = () => {
           {/* Header component */}
           <ChatpageHeader chats={chats} setDialogBody={setDialogBody} />
 
-          <div className={`row g-1 col`} style={{marginTop : "0"}}>
+          <div className={`row overflow-auto g-1 col`} style={{marginTop : "0"}}>
             {/* Chat List component */}
             <ChatListView
               chats={chats}

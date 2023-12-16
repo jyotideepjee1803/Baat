@@ -186,7 +186,7 @@ const ChatListView = ({
         </div>
       </section>
       {/* Chat list */}
-      <section className="chatList m-1 p-1 overflow-auto position-relative">
+      <div className="chatList m-1 p-1 overflow-auto position-relative">
         {loading ? (
           <LoadingList listOf="Chat" dpRadius={"49px"} count={8} />
         ) : filteredChats?.length > 0 ? (
@@ -223,7 +223,7 @@ const ChatListView = ({
             {chats?.length === 0 && <GettingStarted />}
           </>
         )}
-      </section>
+      </div>
     </div>
   );
 };

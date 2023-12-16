@@ -1,13 +1,12 @@
-import { NotificationsNone, Search, GroupAdd } from "@mui/icons-material";
+import { NotificationsNone, GroupAdd, PersonSearch } from "@mui/icons-material";
 import { Avatar, IconButton } from "@mui/material";
-import { SetStateAction, useEffect, useRef, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import AddMembersToGroup from "./dialogs/AddMembersToGroup";
 import NotificationsMenu from "./menus/NotificationsMenu";
 import ProfileSettingsMenu from "./menus/ProfileSettingsMenu";
 import SearchUsersDrawer from "./utils/SearchUsersDrawer";
 import getCustomTooltip from "./utils/CustomTooltip";
-import logo from "../animations/app_logo.json";
-import LottieAnimation from "./utils/LottieAnimation";
+
 import { 
   displayDialog, 
   setShowDialogActions 
@@ -20,7 +19,6 @@ import {
   ChatType,
   ClickEventHandler,
   DialogBodySetter,
-  SpanRef,
 } from "../utils/AppTypes";
 import { ThemeSwitch } from "./utils/ThemeSwitch";
 
@@ -47,7 +45,6 @@ const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
   const dispatch = useAppDispatch();
 
   const { loggedInUser } = useSelector(selectAppState);
-  const appGif = useRef<HTMLSpanElement>();
   const notifCount = loggedInUser?.notifications?.length || "";
 
   const [animateNotif, setAnimateNotif] = useState(false);
@@ -95,6 +92,7 @@ const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
       setAnimateNotif(false);
     }, 1000);
     return () => clearTimeout(timeout);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [notifCount]);
 
   return (
@@ -168,7 +166,7 @@ const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
       />
 
       {/* Search Users to create/access chat */}
-      <CustomTooltip title="Search or Start a new chat" placement="bottom-end" arrow>
+      <CustomTooltip title="Search users" placement="bottom-end" arrow>
         <IconButton
           sx={{
             color: "#cadeef",
@@ -177,7 +175,7 @@ const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
           className={`position-relative mx-1`}
           onClick={() => setIsDrawerOpen(true)}
         >
-          <Search style={{color: "#0784b5"}}/>
+          <PersonSearch style={{color: "#0784b5"}}/>
         </IconButton>
       </CustomTooltip>
       <SearchUsersDrawer

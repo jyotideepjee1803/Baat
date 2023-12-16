@@ -72,6 +72,7 @@ const EditProfileBody = () => {
       profilePicUrl: loggedInUser?.profilePic as string,
       name: loggedInUser?.name as string,
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedInUser]);
 
   const displayWarning = (message = "Warning", duration = 3000) => {
@@ -286,7 +287,7 @@ const EditProfileBody = () => {
   const openEditProfilePicMenu: ClickEventHandler = (e) => {
     setEditProfilePicMenuAnchor(e.target as SetStateAction<HTMLElement | null>);
   };
-
+  console.log(loggedInUser);
   return (
     <>
       {/* View/Edit Profile Pic */}
@@ -328,7 +329,7 @@ const EditProfileBody = () => {
             selectProfilePic={() => imgInput?.current?.click()}
             openDeletePhotoConfirmDialog={openDeletePhotoConfirmDialog}
             deletePhotoCondition={
-              !loggedInUser?.profilePic?.endsWith("user_dqzjdz.png")
+              !loggedInUser?.profilePic?.endsWith("user_dqzjdz.jpg")
             }
           />
           <input

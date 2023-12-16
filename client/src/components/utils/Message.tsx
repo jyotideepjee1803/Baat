@@ -1,4 +1,4 @@
-import { StyledComponent } from "@emotion/styled";
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   AttachFile,
   Close,
@@ -8,7 +8,7 @@ import {
   Edit,
   KeyboardArrowDown,
 } from "@mui/icons-material";
-import { Avatar, CircularProgress, IconButton, TooltipProps, Divider, Chip } from "@mui/material";
+import { Avatar, CircularProgress, IconButton, Divider, Chip } from "@mui/material";
 import { forwardRef, useEffect, useRef } from "react";
 import { selectAppState } from "../../store/slices/AppSlice";
 import { useAppSelector } from "../../store/storeHooks";
@@ -56,7 +56,7 @@ const Message = forwardRef(
     }: Props,
     editableMsgRef: React.ForwardedRef<HTMLSpanElement>
   ) => {
-    const { loggedInUser, selectedChat } = useAppSelector(selectAppState);
+    const { loggedInUser} = useAppSelector(selectAppState);
 
     const fileUrl = currMsg?.fileUrl;
     const file_id = currMsg?.file_id;

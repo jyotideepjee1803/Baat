@@ -20,7 +20,7 @@ import { useAppDispatch, useAppSelector } from "../../store/storeHooks";
 import { CustomDialogState } from "../../utils/AppTypes";
 import { truncateString } from "../../utils/appUtils";
 
-export const btnHoverStyle = { ":hover": { backgroundColor: "#93c2f727" } };
+export const btnHoverStyle = { ":hover": { backgroundColor: "#cadeef" } };
 export const btnCustomStyle = {
   fontSize: 17,
   color: "#8cc2ff",
@@ -79,7 +79,7 @@ const CustomDialog = ({
       PaperProps={{
         sx: {
           borderRadius: 2,
-          backgroundImage: "linear-gradient(0deg,#353535,#444)",
+          backgroundColor : "#0784b5"
         },
       }}
       className={`user-select-none ${disableIfLoading}`}
@@ -111,11 +111,11 @@ const CustomDialog = ({
               top: 8,
               color: "#999999",
               ":hover": {
-                backgroundColor: "#aaaaaa20",
+                backgroundColor: "#cadeef",
               },
             }}
           >
-            <Close />
+            <Close style={{color : "#ffffff"}}/>
           </IconButton>
         )}
       </DialogTitle>

@@ -10,12 +10,12 @@
 @import "LoadingMsgs";
 @import "Message";
 @import "MsgAttachment";
+@import "SearchInput";
 @import url($appFontUrl);
 
 body {
-  background-size: 100% 100%;
-  background-attachment: fixed;
   background: #ffffff;
+  overflow: hidden;
   // background-image: url($appBgUrl);
   & * {
     font-family: "Trebuchet MS";

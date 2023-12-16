@@ -1,25 +1,11 @@
-@keyframes slideUp {
-  0% {
-    bottom: 10px;
-  }
-  100% {
-    bottom: 55px;
-  }
-}
-@keyframes slideDown {
-  0% {
-    bottom: 55px;
-  }
-  100% {
-    bottom: 10px;
-  }
-}
 .chatpage {
+  position: relative;
   min-width: 340px;
-  height: 100vh;
   .chatpageDiv {
     background-color: #FCFCFC;
     padding: 2px 0px 2px 0px;
+    max-height: min-content;
+    height : 100vh;
   }
 
   .chatListDiv{
@@ -28,6 +14,8 @@
       -webkit-box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
       -moz-box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
       box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
+      max-height: min-content;
+      height : 100vh;
       // z-index: 10;
       // border-right: 1px solid #77828d;
   }
@@ -38,6 +26,7 @@
     -webkit-box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
     -moz-box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
     box-shadow: 6px 0px 16px -16px rgba(0,0,0,0.75);
+    height : 100vh;
   }
   .searchField{
     background-color: #e0e4e8;
@@ -60,8 +49,7 @@
       margin-top: 20px;
     }
     .chatList {
-      height: 100%;
-      border-radius: 15px;
+      overflow-y: scroll;
     }
   }
   @media (max-width: 768px){
