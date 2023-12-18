@@ -201,8 +201,8 @@ const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
         </CustomTooltip>
       </div>
 
-      {/* Profile settings  */}
-      <div style={{padding : 10}}>
+      {/* Theme settings  */}
+      {/* <div style={{padding : 10}}>
         <CustomTooltip 
           title="Change Theme"
           placement="bottom-end"
@@ -210,7 +210,7 @@ const ChatpageHeader = ({ chats, setDialogBody }: Props) => {
         >
           <ThemeSwitch defaultChecked/>
         </CustomTooltip>
-      </div>
+      </div> */}
     </div>
   );
 };
