@@ -99,27 +99,10 @@ const Login = () => {
       dispatch(setLoading(false));
     }
   };
-
-  const handleReset: ClickEventHandler = (e) => {
-    e.preventDefault();
-    setUserCredentials({
-      email: "",
-      password: "",
-    });
-  };
-
-  // const setGuestCredentials: ClickEventHandler = (e) => {
-  //   e.preventDefault();
-  //   setUserCredentials({
-  //     email: "demo@gmail.com",
-  //     password: "demo@1234",
-  //   });
-  // };
-
   return (
-    <>
+    <div>
     <form
-      className={`app__form justify-content-center user-select-none row`}
+      className={`app__form justify-content-center alguser-select-none row`}
       style={{ pointerEvents: loading ? "none" : "auto" }}
     >
       {/* Email input */}
@@ -159,7 +142,7 @@ const Login = () => {
         </div>
       </section>
       <section
-        className={`${formFieldClassName} col-7 mb-4 d-flex justify-content-between`}
+        className={`${formFieldClassName} col-7 mb-4 d-flex justify-content-center`}
       >
         {/* Login button */}
         <button
@@ -181,23 +164,13 @@ const Login = () => {
             "Login"
           )}
         </button>
-        {/* Reset button */}
-        <button
-          type="reset"
-          name="btnReset"
-          id="login__btnReset"
-          onClick={handleReset}
-          className={`${btnResetClassName}`}
-        >
-          Reset
-        </button>
       </section>
       <section className="col-7 order-last">
-        <p>New user ? <a href="/register" className="link-success">Create Account</a></p>
+        <p style={{color: "#08afe1"}}>Don't have an account? <a href="/register" className="link-success">Sign up</a></p>
       </section>
       </form>
      
-    </>
+    </div>
   );
 };
 

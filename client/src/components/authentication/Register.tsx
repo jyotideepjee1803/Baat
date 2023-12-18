@@ -1,4 +1,4 @@
-import { AddAPhoto } from "@mui/icons-material";
+// import { AddAPhoto } from "@mui/icons-material";
 import { useState, useRef, ChangeEventHandler, LegacyRef } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import axios from "../../utils/axios";
@@ -38,13 +38,12 @@ const Register = () => {
     formFieldClassName,
     inputFieldClassName,
     btnSubmitClassName,
-    btnResetClassName,
   } = useAppSelector(selectFormfieldState);
 
   const dispatch = useAppDispatch();
   const navigate: NavigateFunction = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const imgInput = useRef<HTMLInputElement>();
+  // const imgInput = useRef<HTMLInputElement>();
 
   const [userData, setUserData] = useState({
     name: "",
@@ -158,55 +157,41 @@ const Register = () => {
     }
   };
 
-  const handleReset: ClickEventHandler = (e) => {
-    e.preventDefault();
-    setUserData({
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      profilePic: "",
-      profilePicUrl: DEFAULT_USER_DP,
-    });
-    if (!imgInput || !imgInput.current) return;
-    imgInput.current.value = "";
-  };
+  // const handleImgInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  //   if (!e || !e.target || !e.target.files) return;
+  //   const image = e.target.files[0];
+  //   if (!image) return;
 
-  const handleImgInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    if (!e || !e.target || !e.target.files) return;
-    const image = e.target.files[0];
-    if (!image) return;
+  //   if (!isImageFile(image.name)) {
+  //     return dispatch(
+  //       displayToast({
+  //         title: "Invalid Image File",
+  //         message: "Please Select an Image File (png/jpg/jpeg/svg/webp)",
+  //         type: "warning",
+  //         duration: 5000,
+  //         position: "bottom-center",
+  //       } as ToastData)
+  //     );
+  //   }
 
-    if (!isImageFile(image.name)) {
-      return dispatch(
-        displayToast({
-          title: "Invalid Image File",
-          message: "Please Select an Image File (png/jpg/jpeg/svg/webp)",
-          type: "warning",
-          duration: 5000,
-          position: "bottom-center",
-        } as ToastData)
-      );
-    }
-
-    if (image.size >= TWO_MB) {
-      if (!imgInput || !imgInput.current) return;
-      imgInput.current.value = "";
-      return dispatch(
-        displayToast({
-          message: "Please Select an Image Smaller than 2 MB",
-          type: "warning",
-          duration: 3000,
-          position: "bottom-center",
-        } as ToastData)
-      );
-    }
-    setUserData({
-      ...userData,
-      profilePic: image,
-      profilePicUrl: URL.createObjectURL(image),
-    });
-  };
+  //   if (image.size >= TWO_MB) {
+  //     if (!imgInput || !imgInput.current) return;
+  //     imgInput.current.value = "";
+  //     return dispatch(
+  //       displayToast({
+  //         message: "Please Select an Image Smaller than 2 MB",
+  //         type: "warning",
+  //         duration: 3000,
+  //         position: "bottom-center",
+  //       } as ToastData)
+  //     );
+  //   }
+  //   setUserData({
+  //     ...userData,
+  //     profilePic: image,
+  //     profilePicUrl: URL.createObjectURL(image),
+  //   });
+  // };
 
   return (
     <>    
@@ -214,33 +199,6 @@ const Register = () => {
       className={`app__form justify-content-center user-select-none row ${disableIfLoading}`}
       style={{ pointerEvents: loading ? "none" : "auto" }}
     >
-      {/* Select Profile Pic */}
-      <section className="app__formfield position-relative mb-4">
-        <img
-          className="userProfilePic img-fluid border border-2 border-primary rounded-circle mt-3"
-          id="register__imgProfile"
-          src={profilePicUrl}
-          alt="profilePic"
-        />
-        <i
-          id="register__selectPic"
-          className={`selectPicIcon position-absolute p-2 d-flex ${disableIfLoading} justify-content-center align-items-center bg-success rounded-circle pointer`}
-          onClick={() => {
-            if (!loading) imgInput?.current?.click();
-          }}
-        >
-          <AddAPhoto className="text-light fs-6" />
-        </i>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImgInputChange}
-          name="profilepic"
-          id="register__img_input"
-          ref={imgInput as LegacyRef<HTMLInputElement>}
-          className={`d-none`}
-        />
-      </section>
       {/* Name input */}
       <section className={`${formFieldClassName} col-7 order-md-1`}>
         <label htmlFor="register__username" className={`${formLabelClassName}`}>
@@ -319,7 +277,7 @@ const Register = () => {
         </div>
       </section>
       <section
-        className={`${formFieldClassName} mb-4 d-flex col-7 justify-content-between order-5`}
+        className={`${formFieldClassName} mb-4 d-flex col-7 justify-content-center order-5`}
       >
         {/* Register button */}
         <button
@@ -341,22 +299,11 @@ const Register = () => {
             "Register"
           )}
         </button>
-        {/* Reset button */}
-        <button
-          type="reset"
-          name="btnReset"
-          id="register__btnReset"
-          onClick={handleReset}
-          className={`${btnResetClassName}`}
-        >
-          Reset
-        </button>
       </section>
       <section className="col-7 order-last">
-      <p>Already have an account ? <a href="/login" className="link-success">Signin</a></p>
+      <p style={{color: "#08afe1"}}>Already have an account? <a href="/login" className="link-success">Sign in</a></p>
       </section>
     </form>
-    
     </>
   );
 };

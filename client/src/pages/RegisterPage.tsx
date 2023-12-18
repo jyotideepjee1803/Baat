@@ -21,7 +21,7 @@ function RegisterPage() {
     return (
       <div className="d-flex align-items-center justify-content-center">
       <div className={`flex row justify-content-center p-4`}>
-        <div className="chatpageDiv col-lg-6 col-md-12">
+        <div className="bannerDiv col-6">
         <SignBanner/>
         </div>
         <div className="homepage container-fluid d-flex align-items-center justify-content-center flex-column p-4 col-lg-6">

@@ -17,7 +17,7 @@ const PasswordVisibilityToggle = ({
   return (
     <span
       className={`input-group-text ${disableIfLoading} btn`}
-      style={{color:"#ffffff", background:"#343434"}}
+      style={{color:"#343434", background:"#e0e4e8"}}
       onClick={toggleVisibility}
     >
       {showPassword ? <VisibilityOff /> : <Visibility />}
