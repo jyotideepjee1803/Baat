@@ -15,7 +15,7 @@ const userSchema = new Schema(
       type: String,
       trim: true,
       default:
-        "https://res.cloudinary.com/dpjkh7jo2/image/upload/v1700163969/vooeslg1k6lzbnwojxxh.jpg",
+        "https://res.cloudinary.com/dpjkh7jo2/image/upload/v1703086180/user_i8wjo5.png",
     },
   },
   { timestamps: true }

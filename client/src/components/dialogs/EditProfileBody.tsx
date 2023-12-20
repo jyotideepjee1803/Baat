@@ -329,7 +329,7 @@ const EditProfileBody = () => {
             selectProfilePic={() => imgInput?.current?.click()}
             openDeletePhotoConfirmDialog={openDeletePhotoConfirmDialog}
             deletePhotoCondition={
-              !loggedInUser?.profilePic?.endsWith("user_dqzjdz.jpg")
+              !loggedInUser?.profilePic?.endsWith("user_i8wjo5.png")
             }
           />
           <input

@@ -72,7 +72,7 @@ const GroupMemberItem = ({ user, truncateValues }: Props) => {
         <p data-user={_id} className="groupMemberName fw-bold text-info">
           {isLoggedInUser ? "You" : truncateString(name, max, index)}
         </p>
-        <p data-user={_id} className="groupMemberEmail">
+        <p data-user={_id} className="groupMemberEmail fs-6 text-dark">
           {truncateString(email, max, index)}
         </p>
       </div>

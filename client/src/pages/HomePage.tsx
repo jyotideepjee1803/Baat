@@ -1,14 +1,9 @@
-import {useEffect, useRef } from "react";
+import {useEffect} from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-
-import LottieAnimation from "../components/utils/LottieAnimation";
-
-import animationData from "../animations/chat-gif.json";
-
-import type { SpanRef, UserType } from "../utils/AppTypes";
+import type { UserType } from "../utils/AppTypes";
+import Loading from "../components/Loading";
 
 const HomePage = () => {
-  const appGif = useRef<HTMLSpanElement>();
   const navigate: NavigateFunction = useNavigate();
 
   useEffect(() => {
@@ -23,15 +18,9 @@ const HomePage = () => {
   }, []);
 
   return (
-    <section className="homepage container-fluid d-flex flex-column p-4">
-      
-        <LottieAnimation
-          ref={appGif as SpanRef}
-          className={"d-inline-block me-2"}
-          style={{ width: "35px", height: "35px" }}
-          animationData={animationData}
-        />
-    </section>
+    <div style={{ marginTop: 150 }}>
+      <Loading/>
+    </div>
   );
 };
 

@@ -133,7 +133,7 @@ const deleteGroupDP = asyncHandler(async (req, res) => {
   }
 
   // Delete the existing dp only if it's not the default dp
-  if (currentDP.endsWith("group_mbuvht.png")) {
+  if (currentDP.endsWith("group_gh0vrf.png")) {
     res.status(400);
     throw new Error("Cannot Delete the Default Group DP");
   }
@@ -171,7 +171,7 @@ const updateGroupDP = asyncHandler(async (req, res) => {
 
   const uploadPromise = cloudinary.uploader.upload(displayPic.path);
   // Delete the existing dp only if it's not the default dp
-  const destroyPromise = !currentDP.endsWith("group_mbuvht.png")
+  const destroyPromise = !currentDP.endsWith("group_gh0vrf.png")
     ? cloudinary.uploader.destroy(cloudinary_id)
     : Promise.resolve();
 
@@ -286,7 +286,7 @@ const deleteGroupChat = asyncHandler(async (req, res) => {
     throw new Error("Invalid request params for deleting group");
   }
 
-  const deleteDpPromise = !currentDP.endsWith("group_mbuvht.png")
+  const deleteDpPromise = !currentDP.endsWith("group_gh0vrf.png")
     ? cloudinary.uploader.destroy(cloudinary_id)
     : Promise.resolve();
   const deleteGroupPromise = ChatModel.findByIdAndDelete(chatId);

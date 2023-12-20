@@ -564,7 +564,7 @@ const GroupInfoBody = ({ messages }: Props) => {
             setAnchor={setEditGroupDpMenuAnchor}
             selectProfilePic={() => imgInput?.current?.click()}
             openDeletePhotoConfirmDialog={openDeletePhotoConfirmDialog}
-            deletePhotoCondition={!groupDP?.endsWith("group_mbuvht.png")}
+            deletePhotoCondition={!groupDP?.endsWith("group_gh0vrf.png")}
           />
           <input
             type="file"

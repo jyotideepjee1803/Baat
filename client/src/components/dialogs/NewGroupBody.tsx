@@ -219,7 +219,7 @@ const NewGroupBody = ({ closeChildDialog }: Props) => {
           selectProfilePic={() => imgInput?.current?.click()}
           openDeletePhotoConfirmDialog={handleReset}
           deletePhotoCondition={
-            !chatDisplayPicUrl?.endsWith("group_mbuvht.png")
+            !chatDisplayPicUrl?.endsWith("group_gh0vrf.png")
           }
         />
         <input

@@ -232,7 +232,7 @@ const updateUserProfilePic = asyncHandler(async (req, res) => {
     throw new Error("Invalid request params for update user profile pic");
   }
   // Delete the existing profile pic only if it's not the default one
-  if (!currentProfilePic.endsWith("user_dqzjdz.png")) {
+  if (!currentProfilePic.endsWith("user_i8wjo5.png")) {
     cloudinary.uploader.destroy(cloudinary_id);
   }
   const uploadResponse = await cloudinary.uploader.upload(newProfilePic.path);
@@ -287,7 +287,7 @@ const deleteUserProfilePic = asyncHandler(async (req, res) => {
   }
 
   // Delete the existing profile pic only if it's not the default one
-  if (currentProfilePic.endsWith("user_dqzjdz.png")) {
+  if (currentProfilePic.endsWith("user_i8wjo5.png")) {
     res.status(400);
     throw new Error("Cannot delete the default user profile pic");
   }
