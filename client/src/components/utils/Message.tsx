@@ -56,7 +56,7 @@ const Message = forwardRef(
     }: Props,
     editableMsgRef: React.ForwardedRef<HTMLSpanElement>
   ) => {
-    const { loggedInUser} = useAppSelector(selectAppState);
+    const { loggedInUser,selectedChat} = useAppSelector(selectAppState);
 
     const fileUrl = currMsg?.fileUrl;
     const file_id = currMsg?.file_id;
@@ -78,7 +78,7 @@ const Message = forwardRef(
     const isEditMode = msgEditMode && isClickedMsgCurrMsg;
     const isOtherDay = dateStringOf(currMsgDate) !== dateStringOf(prevMsgDate);
     const showCurrSender =
-      !isLoggedInUser &&
+      !isLoggedInUser && selectedChat?.isGroupChat &&
       (!isSameSender || isOtherDay);
 
     useEffect(() => {

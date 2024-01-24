@@ -9,6 +9,7 @@ import MessageRoutes from "./routes/MessageRoutes.js";
 import path from "path";
 import {notFoundHandler,appErrorHandler} from "./middleware/ErrorMiddleware.js";
 import configureSocketEvents from "./config/sockets.js";
+import morgan from "morgan";
 
 connectDB();
 
@@ -20,6 +21,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 
 // App routes
 app.use("/api/user", UserRoutes);
